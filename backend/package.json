@@ -12,9 +12,15 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@clerk/clerk-sdk-node": "^5.0.59",
     "cors": "^2.8.5",
     "express": "^4.21.1",
     "imagekit": "^5.2.0",
-    "nodemon": "^3.1.7"
+    "install": "^0.13.0",
+    "mongoose": "^8.8.0",
+    "nodemon": "^3.1.7",
+    "npm": "^10.9.0",
+    "path": "^0.12.7",
+    "url": "^0.11.4"
   }
 }

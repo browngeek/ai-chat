@@ -6,6 +6,8 @@ import { useState } from "react";
 const Homepage = () => {
   const [typingStatus, setTypingStatus] = useState("human1");
 
+
+
   return (
     <div className="homepage">
       <img src="/orbital.png" alt="" className="orbital" />
@@ -17,7 +19,7 @@ const Homepage = () => {
           dolorem doloribus, architecto dolor.
         </h3>
         <Link to="/dashboard">Get Started</Link>
-      </div>
+       </div>
       <div className="right">
         <div className="imgContainer">
           <div className="bgContainer">

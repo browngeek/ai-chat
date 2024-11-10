@@ -1,6 +1,39 @@
+import { QueryClient, useMutation } from '@tanstack/react-query'
 import './dashboardPage.css'
+import { useNavigate } from 'react-router-dom';
 
 const DashboardPage = () => {
+
+  const queryClient = new QueryClient();
+  const navigate = useNavigate();
+
+  // Mutations
+  const mutation = useMutation({
+    mutationFn: (text) => {
+      return fetch(`${import.meta.env.VITE_API_URL}/api/chats`, { 
+        method: 'POST',
+        credentials: "include",
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text: text }),
+      }).then((res) => res.json());
+    },
+    onSuccess: (id) => {
+      // Invalidate and refetch
+      queryClient.invalidateQueries({ queryKey: ['userChats'] });
+      navigate(`/dashboard/chats/${id}`);
+    },
+  })
+
+  const handleSubmit = async(e)=> {
+    e.preventDefault();
+
+    const prompt = e.target.text.value;
+    if (!prompt) return;
+
+    mutation.mutate(prompt);
+    
+  };
+
   return (
     <div className='dashboardPage'>
       <div className="texts">
@@ -24,8 +57,8 @@ const DashboardPage = () => {
         
         </div>
         <div className="formContainer">
-          <form action="">
-            <input type="text" placeholder='Ask me anything'/>
+          <form onSubmit={handleSubmit}>
+            <input type="text" name="text" placeholder='Ask me anything'/>
             <button>
               <img src="/arrow.png" alt="" />
             </button>

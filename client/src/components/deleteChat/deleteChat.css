@@ -1,0 +1,12 @@
+.deleteChat {
+    .icon {
+        visibility: visible; /* Hide icon by default */
+        opacity: 1;
+        transition: opacity 0.2s ease, visibility 0.2s ease;
+      }
+      
+      .icon-container:hover .icon {
+        visibility: visible; /* Show icon on hover */
+        opacity: 1;
+      }
+}
